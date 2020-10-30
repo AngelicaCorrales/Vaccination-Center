@@ -29,6 +29,46 @@ public class Centro{
 		this.pacientes=pacientes;
 	}
 
+	public int getQuantityParticular(){
+		return quantityParticular;
+	}
+
+	public void setQuantityParticular(int quantityParticular){
+		this.quantityParticular=quantityParticular;
+	}
+
+	public int getQuantityEPS(){
+		return quantityEPS;
+	}
+
+	public void setQuantityEPS(int quantityEPS){
+		this.quantityEPS=quantityEPS;
+	}
+
+	public int getQuantityCoomeva(){
+		return quantityCoomeva;
+	}
+
+	public void setQuantityCoomeva(int quantityCoomeva){
+		this.quantityCoomeva=quantityCoomeva;
+	}
+
+	public int getQuantitySURA(){
+		return quantitySURA;
+	}
+
+	public void setQuantitySURA(int quantitySURA){
+		this.quantitySURA=quantitySURA;
+	}
+
+	public int getQuantityOtraEntidad(){
+		return quantityOtraEntidad;
+	}
+
+	public void setQuantityOtraEntidad(int quantityOtraEntidad){
+		this.quantityOtraEntidad=quantityOtraEntidad;
+	}
+
 	public Paciente findPatient(String idPaciente){
 		boolean found= false;
 		Paciente obj=null;
@@ -236,8 +276,7 @@ public class Centro{
 			}
 		}
 		if (pacientes[0]==null){
-			info+="\n**************  Paciente **************\n \n"+
-			"** Aun no se han agregado pacientes \n";
+			info+="\n** Aun no se han agregado pacientes \n";
 		}
 
 		info+="\n"+showQuantityPatients();
