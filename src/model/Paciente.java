@@ -4,12 +4,14 @@ public abstract class Paciente{
 	private String apellido;
 	private int edad;
 	private String id;
+	
 
 	public Paciente(String nombre, String apellido, int edad, String id){
 		this.nombre=nombre;
 		this.apellido=apellido;
 		this.edad=edad;
 		this.id=id;
+		
 	}
 
 	public String getNombre(){
@@ -43,5 +45,7 @@ public abstract class Paciente{
 	public void setId(String id){
 		this.id=id;
 	}
+
+
 
 }

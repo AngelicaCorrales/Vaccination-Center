@@ -39,7 +39,7 @@ public class Main{
 			addPatient();
 			break;
 		case 2:
-			//showQuantityPatients();
+			showQuantityPatients();
 			break;
 		case 3:
 			//showInfoPatient();
@@ -206,6 +206,14 @@ public class Main{
 		System.out.println("-----------------------------------------------------------");
 		System.out.println(message);
 		System.out.println("-----------------------------------------------------------");
+	}
+
+	public void showQuantityPatients(){
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("MOSTRAR LA CANTIDAD DE PACIENTES \n");
+        String list=centro.showQuantityPatients();
+        System.out.println(list);
+        System.out.println("-----------------------------------------------------------");
 	}
 
 	public void createCenter(){

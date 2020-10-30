@@ -136,10 +136,150 @@ public class Centro{
 			}
 		}
 		else{
-			message="No se ha podido agregar el paciente. Ya existe un paciente con el mismo documento de identificacion";
+			message="No se ha podido agregar el paciente. Ya existe un paciente con el mismo documento de identidad";
 		}
 		return message;
 	}
+
+	public int getTotalQuantityPatients(){
+	
+		int amount=0;
+		boolean control=false;
+		for(int i=0; i<pacientes.length && !control; i++){
+			if(pacientes[i]==null){
+				amount=i;
+				control=true;
+			}
+			if(pacientes[MAX_PACIENTES-1]!=null){
+				amount=MAX_PACIENTES;
+			}
+		}
+		return amount;
+	}
+
+	public int getQuantityParticular(){
+		int amount=0;
+		boolean control=false;
+		for(int i=0; i<pacientes.length && !control; i++){
+			if(pacientes[i]!=null){
+				if(pacientes[i] instanceof Particular){
+					amount++;
+				}
+			}
+			else{
+				control=true;
+			}
+		}
+		return amount;
+	}
+
+	public int getQuantityEPS(){
+		int amount=0;
+		boolean control=false;
+		for(int i=0; i<pacientes.length && !control; i++){
+			if(pacientes[i]!=null){
+				if(pacientes[i] instanceof EPS){
+					amount++;
+				}
+			}
+			else{
+				control=true;
+			}
+		}
+
+		return amount;
+	}
+
+	public int getQuantityMedPrep(){
+			int amount= getQuantityCoomeva()+getQuantitySURA()+ getQuantityOtraEntidad();
+
+			return amount;
+		}
+
+	public int getQuantityCoomeva(){
+		int amount=0;
+		boolean control=false;
+		for(int i=0; i<pacientes.length && !control; i++){
+			if(pacientes[i]!=null){
+				if(pacientes[i] instanceof Coomeva){
+					amount++;
+				}
+			}
+			else{
+				control=true;
+			}
+		}
+
+		return amount;
+	}
+
+	public int getQuantitySURA(){
+		int amount=0;
+		boolean control=false;
+		for(int i=0; i<pacientes.length && !control; i++){
+			if(pacientes[i]!=null){
+				if(pacientes[i] instanceof SURA){
+					amount++;
+				}
+			}
+			else{
+				control=true;
+			}
+		}
+
+		return amount;
+	}
+
+	public int getQuantityOtraEntidad(){
+		int amount=0;
+		boolean control=false;
+		for(int i=0; i<pacientes.length && !control; i++){
+			if(pacientes[i]!=null){
+				if(pacientes[i] instanceof OtraEntidad){
+					amount++;
+				}
+			}
+			else{
+				control=true;
+			}
+		}
+
+		return amount;
+	}
+
+	public String showQuantityPatients(){
+		String quantity;
+		quantity="**************  Cantidad de pacientes **************\n \n"+
+		"** Cantidad total de pacientes: "+ getTotalQuantityPatients()+"\n \n"+
+		"** Cantidad de pacientes particulares: "+ getQuantityParticular()+"\n\n "+
+		"** Cantidad de pacientes por EPS: "+ getQuantityEPS()+"\n \n"+
+		"** Cantidad de pacientes por medicina prepagada: "+getQuantityMedPrep()+"\n"+
+		"     *** Cantidad de pacientes Coomeva: "+ getQuantityCoomeva()+"\n"+
+		"     *** Cantidad de pacientes SURA: "+ getQuantitySURA()+"\n"+
+		"     *** Cantidad de pacientes de otras entidades: "+ getQuantityOtraEntidad()+"\n \n";
+
+		return quantity;
+	}
+
+	/*
+	public String showInfo(){
+		String quantity="";
+		boolean control=false;
+		for(int i=0; i<pacientes.length && !control; i++){
+			if(pacientes[i]!=null){
+				quantity+="**************  Paciente **************\n"+
+				"**  Nombre: "+pacientes[i].getNombre()+"\n"+
+				"**  Apellido: "+ pacientes[i].getApellido()+"\n"+
+				"**  Edad: "+pacientes[i].getEdad()+"\n"
+				"**  Documento de identidad: "+pacientes[i].getId()+"\n";
+
+				if(pacientes[i] instanceof Particular){
+					quantity+="**  Telefono: "+((Particular)pacientes[i]).getTelefono()+"\n";
+				}
+
+
+	}
+	*/
 
 
 
