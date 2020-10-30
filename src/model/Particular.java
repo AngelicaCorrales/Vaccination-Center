@@ -47,5 +47,13 @@ public class Particular extends Paciente{
 		this.licenciaMed=licenciaMed;
 	}
 
+	public String toString(){
+		return super.toString()+ 
+		"**  Telefono: "+telefono+"\n"+
+		"**  Nombre del medico tratante: "+nombreMed+"\n"+
+		"**  Telefono del medico tratante: "+telefonoMed+"\n"+
+		"**  Numero de licencia del medico tratante: "+licenciaMed+"\n";
+	}
+
 
 }

@@ -17,4 +17,8 @@ public abstract class MedicinaPrep extends Paciente{
 		this.numAfiliacion=numAfiliacion;
 	}
 
+	public String toString(){
+		return super.toString();
+	}
+
 }

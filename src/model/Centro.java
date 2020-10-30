@@ -173,7 +173,7 @@ public class Centro{
 
 	public String showQuantityPatients(){
 		String quantity;
-		quantity="**************  Cantidad de pacientes **************\n \n"+
+		quantity="\n**************  Cantidad de pacientes **************\n \n"+
 		"** Cantidad total de pacientes: "+ getTotalQuantity()+"\n \n"+
 		"** Cantidad de pacientes particulares: "+ quantityParticular+"\n\n "+
 		"** Cantidad de pacientes por EPS: "+ quantityEPS+"\n \n"+
@@ -192,36 +192,26 @@ public class Centro{
 		
 		if(pacientex!=null){
 			
-					info+="**************  Paciente **************\n"+
-					"**  Nombre: "+pacientex.getNombre()+"\n"+
-					"**  Apellido: "+ pacientex.getApellido()+"\n"+
-					"**  Edad: "+pacientex.getEdad()+"\n"+
-					"**  Documento de identidad: "+pacientex.getId()+"\n";
-
+					
 					if(pacientex instanceof Particular){
-						info+="**  Telefono: "+((Particular)pacientex).getTelefono()+"\n"+
-						"**  Nombre del medico tratante: "+((Particular)pacientex).getNombreMed()+"\n"+
-						"**  Telefono del medico tratante: "+((Particular)pacientex).getTelefonoMed()+"\n"+
-						"**  Numero de licencia del medico tratante: "+((Particular)pacientex).getTelefonoMed()+"\n";
+						info=pacientex.toString();
+						
 					}
 
 					if(pacientex instanceof EPS){
-						info+="**  Nombre de la EPS: "+((EPS)pacientex).getNombreEPS()+"\n"+
-						"**  Numero de la orden de servicio: "+((EPS)pacientex).getNumOrden()+"\n";
+						info=pacientex.toString();
 					}
 
 					if(pacientex instanceof Coomeva){
-						info+="**  Categoria: "+((Coomeva)pacientex).getCategory()+"\n";
+						info=pacientex.toString();
 					}
 
 					if(pacientex instanceof SURA){
-						info+="**  Valor minimo del rango de cubrimiento de la poliza: "+((SURA)pacientex).getPoliza()[0]+"\n"+
-						"**  Valor maximo del rango de cubrimiento de la poliza: "+((SURA)pacientex).getPoliza()[1]+"\n";
+						info=pacientex.toString();
 					}
 
 					if(pacientex instanceof OtraEntidad){
-						info+="**  Nombre de la entidad: "+((OtraEntidad)pacientex).getNombreEntidad()+"\n"+
-						"** Telefono de la entidad: "+((OtraEntidad)pacientex).getTelefonoEntidad()+"\n";
+						info=pacientex.toString();
 					}
 
 		}
@@ -246,11 +236,11 @@ public class Centro{
 			}
 		}
 		if (pacientes[0]==null){
-			info+="**************  Paciente **************\n"+
+			info+="\n**************  Paciente **************\n \n"+
 			"** Aun no se han agregado pacientes \n \n";
 		}
 
-		info+=showQuantityPatients();
+		info+="\n"+showQuantityPatients();
 
 		return info;
 

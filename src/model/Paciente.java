@@ -46,6 +46,14 @@ public abstract class Paciente{
 		this.id=id;
 	}
 
+	public String toString(){
+		return "\n**************  Paciente **************\n"+
+					"**  Nombre: "+nombre+"\n"+
+					"**  Apellido: "+ apellido+"\n"+
+					"**  Edad: "+edad+"\n"+
+					"**  Documento de identidad: "+id+"\n";
+	}
+
 
 
 }

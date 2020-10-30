@@ -25,5 +25,10 @@ public class EPS extends Paciente{
 		this.numOrden=numOrden;
 	}
 
+	public String toString(){
+		return super.toString()+
+		"**  Nombre de la EPS: "+nombreEPS+"\n"+
+		"**  Numero de la orden de servicio: "+numOrden+"\n";
+	}
 
 }

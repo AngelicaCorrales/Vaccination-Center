@@ -24,4 +24,10 @@ public class OtraEntidad extends MedicinaPrep{
 	public void setTelefonoEntidad(String telefonoEntidad){
 		this.telefonoEntidad=telefonoEntidad;
 	}
+
+	public String toString(){
+		return super.toString()+
+		"**  Nombre de la entidad: "+nombreEntidad+"\n"+
+		"** Telefono de la entidad: "+telefonoEntidad+"\n";
+	}
 }

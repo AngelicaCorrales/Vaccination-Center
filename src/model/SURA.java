@@ -14,4 +14,10 @@ public class SURA extends MedicinaPrep{
 	public void setPoliza(int[] poliza){
 		this.poliza=poliza;
 	}
+
+	public String toString(){
+		return super.toString()+
+		"**  Valor minimo del rango de cubrimiento de la poliza: "+poliza[0]+"\n"+
+		"**  Valor maximo del rango de cubrimiento de la poliza: "+poliza[1]+"\n";
+	}
 }
