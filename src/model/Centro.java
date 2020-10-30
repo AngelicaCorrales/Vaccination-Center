@@ -5,10 +5,20 @@ public class Centro{
 	private Paciente[] pacientes;
 
 	private String nombre;
+	private int quantityParticular;
+	private int quantityEPS;
+	private int quantityCoomeva;
+	private int quantitySURA;
+	private int quantityOtraEntidad;
 
 	public Centro(String nombre){
 		this.nombre=nombre;
 		pacientes= new Paciente[MAX_PACIENTES];
+		quantityParticular=0;
+		quantityEPS=0;
+		quantityCoomeva=0;
+		quantitySURA=0;
+		quantityOtraEntidad=0;
 	}
 
 	public Paciente[] getPacientes(){
@@ -42,6 +52,7 @@ public class Centro{
 				if(pacientes[i]==null){
 					pacientes[i]= new Particular(nombre, apellido, edad,id, telefono,nombreMed, telefonoMed, licenciaMed);
 					exit=true;
+					quantityParticular++;
 				}
 			}
 			if(!exit){
@@ -65,6 +76,7 @@ public class Centro{
 				if(pacientes[i]==null){
 					pacientes[i]= new EPS(nombre, apellido, edad,id, nombreEPS, numOrden);
 					exit=true;
+					quantityEPS++;
 				}
 			}
 			if(!exit){
@@ -87,6 +99,7 @@ public class Centro{
 				if(pacientes[i]==null){
 					pacientes[i]= new Coomeva(nombre, apellido,edad,id, numAfiliacion, categoria);
 					exit=true;
+					quantityCoomeva++;
 				}
 			}
 			if(!exit){
@@ -108,6 +121,7 @@ public class Centro{
 				if(pacientes[i]==null){
 					pacientes[i]= new SURA(nombre, apellido,edad,id, numAfiliacion, poliza);
 					exit=true;
+					quantitySURA++;
 				}
 			}
 			if(!exit){
@@ -129,6 +143,7 @@ public class Centro{
 				if(pacientes[i]==null){
 					pacientes[i]= new OtraEntidad(nombre, apellido,edad,id, numAfiliacion, nombreEntidad, telefonoEntidad);
 					exit=true;
+					quantityOtraEntidad++;
 				}
 			}
 			if(!exit){
@@ -141,122 +156,31 @@ public class Centro{
 		return message;
 	}
 
-	public int getTotalQuantityPatients(){
 	
-		int amount=0;
-		boolean control=false;
-		for(int i=0; i<pacientes.length && !control; i++){
-			if(pacientes[i]==null){
-				amount=i;
-				control=true;
-			}
-			if(pacientes[MAX_PACIENTES-1]!=null){
-				amount=MAX_PACIENTES;
-			}
-		}
-		return amount;
-	}
+	public int getTotalQuantity(){
+			int amount= quantityParticular+quantityEPS+getQuantityMedPrep();
 
-	public int getQuantityParticular(){
-		int amount=0;
-		boolean control=false;
-		for(int i=0; i<pacientes.length && !control; i++){
-			if(pacientes[i]!=null){
-				if(pacientes[i] instanceof Particular){
-					amount++;
-				}
-			}
-			else{
-				control=true;
-			}
-		}
-		return amount;
-	}
-
-	public int getQuantityEPS(){
-		int amount=0;
-		boolean control=false;
-		for(int i=0; i<pacientes.length && !control; i++){
-			if(pacientes[i]!=null){
-				if(pacientes[i] instanceof EPS){
-					amount++;
-				}
-			}
-			else{
-				control=true;
-			}
-		}
-
-		return amount;
+			return amount;
 	}
 
 	public int getQuantityMedPrep(){
-			int amount= getQuantityCoomeva()+getQuantitySURA()+ getQuantityOtraEntidad();
+			int amount= quantityCoomeva+quantitySURA+quantityOtraEntidad;
 
 			return amount;
-		}
-
-	public int getQuantityCoomeva(){
-		int amount=0;
-		boolean control=false;
-		for(int i=0; i<pacientes.length && !control; i++){
-			if(pacientes[i]!=null){
-				if(pacientes[i] instanceof Coomeva){
-					amount++;
-				}
-			}
-			else{
-				control=true;
-			}
-		}
-
-		return amount;
 	}
 
-	public int getQuantitySURA(){
-		int amount=0;
-		boolean control=false;
-		for(int i=0; i<pacientes.length && !control; i++){
-			if(pacientes[i]!=null){
-				if(pacientes[i] instanceof SURA){
-					amount++;
-				}
-			}
-			else{
-				control=true;
-			}
-		}
-
-		return amount;
-	}
-
-	public int getQuantityOtraEntidad(){
-		int amount=0;
-		boolean control=false;
-		for(int i=0; i<pacientes.length && !control; i++){
-			if(pacientes[i]!=null){
-				if(pacientes[i] instanceof OtraEntidad){
-					amount++;
-				}
-			}
-			else{
-				control=true;
-			}
-		}
-
-		return amount;
-	}
+	
 
 	public String showQuantityPatients(){
 		String quantity;
 		quantity="**************  Cantidad de pacientes **************\n \n"+
-		"** Cantidad total de pacientes: "+ getTotalQuantityPatients()+"\n \n"+
-		"** Cantidad de pacientes particulares: "+ getQuantityParticular()+"\n\n "+
-		"** Cantidad de pacientes por EPS: "+ getQuantityEPS()+"\n \n"+
+		"** Cantidad total de pacientes: "+ getTotalQuantity()+"\n \n"+
+		"** Cantidad de pacientes particulares: "+ quantityParticular+"\n\n "+
+		"** Cantidad de pacientes por EPS: "+ quantityEPS+"\n \n"+
 		"** Cantidad de pacientes por medicina prepagada: "+getQuantityMedPrep()+"\n"+
-		"     *** Cantidad de pacientes Coomeva: "+ getQuantityCoomeva()+"\n"+
-		"     *** Cantidad de pacientes SURA: "+ getQuantitySURA()+"\n"+
-		"     *** Cantidad de pacientes de otras entidades: "+ getQuantityOtraEntidad()+"\n \n";
+		"     *** Cantidad de pacientes Coomeva: "+ quantityCoomeva+"\n"+
+		"     *** Cantidad de pacientes SURA: "+ quantitySURA+"\n"+
+		"     *** Cantidad de pacientes de otras entidades: "+ quantityOtraEntidad+"\n \n";
 
 		return quantity;
 	}
