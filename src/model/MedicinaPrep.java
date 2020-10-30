@@ -18,7 +18,8 @@ public abstract class MedicinaPrep extends Paciente{
 	}
 
 	public String toString(){
-		return super.toString();
+		return super.toString()+
+		"**  Numero de afiliacion: "+numAfiliacion+"\n";
 	}
 
 }

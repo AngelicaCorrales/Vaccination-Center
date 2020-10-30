@@ -229,7 +229,7 @@ public class Centro{
 
 		for(int i=0; i<pacientes.length && !control; i++){
 			if(pacientes[i]!=null){
-				info+=showInfoPatient(pacientes[i].getId());
+				info+=pacientes[i].toString();
 			}
 			else{
 				control=true;
@@ -237,7 +237,7 @@ public class Centro{
 		}
 		if (pacientes[0]==null){
 			info+="\n**************  Paciente **************\n \n"+
-			"** Aun no se han agregado pacientes \n \n";
+			"** Aun no se han agregado pacientes \n";
 		}
 
 		info+="\n"+showQuantityPatients();

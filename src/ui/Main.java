@@ -79,6 +79,7 @@ public class Main{
 				System.out.println("\n No valido");
 			}
 		}while(edad<0 ||edad>130);
+		
 
 		sc.nextLine();
 		System.out.println("\nIngrese el documento de identidad del paciente");
