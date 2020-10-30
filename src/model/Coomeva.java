@@ -14,4 +14,8 @@ public class Coomeva extends MedicinaPrep{
 	public void setCategoria(Categoria categoria){
 		this.categoria=categoria;
 	}
+
+	public String getCategory(){
+		return categoria.name();
+	}
 }

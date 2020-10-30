@@ -42,10 +42,10 @@ public class Main{
 			showQuantityPatients();
 			break;
 		case 3:
-			//showInfoPatient();
+			showInfoPatient();
 			break;
 		case 4:
-			//showInfo();
+			showInfo();
 			break;
 		case 5:
 			System.out.println("\nHasta la proxima!");
@@ -211,8 +211,32 @@ public class Main{
 	public void showQuantityPatients(){
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("MOSTRAR LA CANTIDAD DE PACIENTES \n");
+		
         String list=centro.showQuantityPatients();
         System.out.println(list);
+
+        System.out.println("-----------------------------------------------------------");
+	}
+
+	public void showInfoPatient(){
+		sc.nextLine();
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("MOSTRAR INFORMACION DE UN PACIENTE \n");
+		
+		System.out.println("Ingrese el documento de identidad del paciente");
+		String id=sc.nextLine();
+        String info=centro.showInfoPatient(id);
+        System.out.println(info);
+        System.out.println("-----------------------------------------------------------");
+	}
+
+	public void showInfo(){
+	
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("MOSTRAR TODA LA INFORMACION DEL CENTRO\n");
+		
+        String info=centro.showInfo();
+        System.out.println(info);
         System.out.println("-----------------------------------------------------------");
 	}
 

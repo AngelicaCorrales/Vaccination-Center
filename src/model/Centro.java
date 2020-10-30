@@ -185,25 +185,77 @@ public class Centro{
 		return quantity;
 	}
 
-	/*
+	
+	public String showInfoPatient(String id){
+		String info="";
+		Paciente pacientex=findPatient(id);
+		
+		if(pacientex!=null){
+			
+					info+="**************  Paciente **************\n"+
+					"**  Nombre: "+pacientex.getNombre()+"\n"+
+					"**  Apellido: "+ pacientex.getApellido()+"\n"+
+					"**  Edad: "+pacientex.getEdad()+"\n"+
+					"**  Documento de identidad: "+pacientex.getId()+"\n";
+
+					if(pacientex instanceof Particular){
+						info+="**  Telefono: "+((Particular)pacientex).getTelefono()+"\n"+
+						"**  Nombre del medico tratante: "+((Particular)pacientex).getNombreMed()+"\n"+
+						"**  Telefono del medico tratante: "+((Particular)pacientex).getTelefonoMed()+"\n"+
+						"**  Numero de licencia del medico tratante: "+((Particular)pacientex).getTelefonoMed()+"\n";
+					}
+
+					if(pacientex instanceof EPS){
+						info+="**  Nombre de la EPS: "+((EPS)pacientex).getNombreEPS()+"\n"+
+						"**  Numero de la orden de servicio: "+((EPS)pacientex).getNumOrden()+"\n";
+					}
+
+					if(pacientex instanceof Coomeva){
+						info+="**  Categoria: "+((Coomeva)pacientex).getCategory()+"\n";
+					}
+
+					if(pacientex instanceof SURA){
+						info+="**  Valor minimo del rango de cubrimiento de la poliza: "+((SURA)pacientex).getPoliza()[0]+"\n"+
+						"**  Valor maximo del rango de cubrimiento de la poliza: "+((SURA)pacientex).getPoliza()[1]+"\n";
+					}
+
+					if(pacientex instanceof OtraEntidad){
+						info+="**  Nombre de la entidad: "+((OtraEntidad)pacientex).getNombreEntidad()+"\n"+
+						"** Telefono de la entidad: "+((OtraEntidad)pacientex).getTelefonoEntidad()+"\n";
+					}
+
+		}
+		else{
+			info="** No existe el paciente";
+		}
+		return info;
+	}
+
 	public String showInfo(){
-		String quantity="";
+		String info="";
 		boolean control=false;
+
+		info+="** Nombre del centro de vacunacion: "+ nombre+"\n \n";
+
 		for(int i=0; i<pacientes.length && !control; i++){
 			if(pacientes[i]!=null){
-				quantity+="**************  Paciente **************\n"+
-				"**  Nombre: "+pacientes[i].getNombre()+"\n"+
-				"**  Apellido: "+ pacientes[i].getApellido()+"\n"+
-				"**  Edad: "+pacientes[i].getEdad()+"\n"
-				"**  Documento de identidad: "+pacientes[i].getId()+"\n";
+				info+=showInfoPatient(pacientes[i].getId());
+			}
+			else{
+				control=true;
+			}
+		}
+		if (pacientes[0]==null){
+			info+="**************  Paciente **************\n"+
+			"** Aun no se han agregado pacientes \n \n";
+		}
 
-				if(pacientes[i] instanceof Particular){
-					quantity+="**  Telefono: "+((Particular)pacientes[i]).getTelefono()+"\n";
-				}
+		info+=showQuantityPatients();
 
+		return info;
 
 	}
-	*/
+	
 
 
 
